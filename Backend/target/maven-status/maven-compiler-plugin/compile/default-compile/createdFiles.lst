@@ -1,0 +1,5 @@
+com/example/backend/repository/StudySpotRepository.class
+com/example/backend/controller/StudySpotController.class
+com/example/backend/DataInitializer.class
+com/example/backend/model/StudySpot.class
+com/example/backend/BackendApplication.class

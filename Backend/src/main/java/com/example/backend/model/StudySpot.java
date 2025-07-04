@@ -24,7 +24,7 @@ public class StudySpot {
         this.latitude = latitude;
         this.rating = rating;
     }
-
+    
     public Long getId() {
         return this.id;
     }
@@ -52,5 +52,4 @@ public class StudySpot {
     public void setRating(double rating) {
         this.rating = rating;
     }
-
 }
