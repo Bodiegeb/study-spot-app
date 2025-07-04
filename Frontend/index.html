@@ -16,8 +16,15 @@
         <script src="script.js"></script>
         
         <div class="controlPanel">
-            <header id=""></header>
-            this is a box
+            <header class="formFill"></header>
+            Add a new study spot or click on a spot to see its details.
+            <form id="addSpotForm">
+            <input type="text" id="name" placeholder="Name" required />
+            <input type="number" id="lat" placeholder="Latitude" step="any" required />
+            <input type="number" id="lon" placeholder="Longitude" step="any" required />
+            <input type="number" id="rating" placeholder="Rating" step="0.1" min="0" max="5" required />
+            <button type="submit">Add Spot</button>
+</form>
         </div>
     </body>
 </html>

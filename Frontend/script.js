@@ -19,7 +19,6 @@ attribution: 'Map data © OpenStreetMap contributors',
 fetch('http://localhost:8080/spots')
   .then(res => res.json())
   .then(spots => {
-    console.log(spots);
     spots.forEach(spot => {
       L.marker([spot.latitude, spot.longitude])
         .addTo(map)
@@ -27,3 +26,31 @@ fetch('http://localhost:8080/spots')
     });
   })
   .catch(err => console.error('Error fetching study spots:', err));
+
+
+  
+  document.getElementById('addSpotForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const latitude = parseFloat(document.getElementById('lat').value);
+  const longitude = parseFloat(document.getElementById('lon').value);
+  const rating = parseFloat(document.getElementById('rating').value);
+
+  fetch('http://localhost:8080/spots', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, latitude, longitude, rating })
+  })
+  .then(res => res.json())
+  .then(spot => {
+    // Optional: Immediately add new marker to map
+    L.marker([spot.latitude, spot.longitude])
+      .addTo(map)
+      .bindPopup(`<b>${spot.name}</b><br>Rating: ${spot.rating}`);
+    
+    // Clear form
+    document.getElementById('addSpotForm').reset();
+  })
+  .catch(err => console.error('Error adding spot:', err));
+});
