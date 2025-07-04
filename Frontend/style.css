@@ -7,16 +7,28 @@ body{
 header{
     background: #003366;
     color: white;
-    padding: 1rem;
+    padding: 1rem auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
-#map{
+h1{
+    margin: 2rem auto;
+    padding: 1rem auto;
     width: 100%;
+    text-align: center;
+}
+#map{
+    width: 85%;
     height: 50vh;
     padding: 1rem;
+    margin: 2rem auto;
+}
 
-
+.controlPanel{
+    padding: 2rem;
+    width: 80%;
+    height: 10rem;
+    margin: 2rem auto;
+    background: #cecccc;
 }
