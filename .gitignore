@@ -1,0 +1,8 @@
+# Ignore build artifacts
+target/
+*.jar
+
+# IntelliJ / Eclipse / VSCode settings (optional good practice)
+.idea/
+*.iml
+.vscode/
