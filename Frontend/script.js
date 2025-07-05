@@ -4,17 +4,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 attribution: 'Map data © OpenStreetMap contributors',
 }).addTo(map);
 
-// const myMap = new Map();
-// myMap.set("Marriot Library", [40.76259974563067, -111.84615814162471])
-// myMap.set("Union", [40.765022635471816, -111.84613557797536])
-// myMap.set("Huntsmun Center", [40.762051516183625, -111.8387307042958])
-// myMap.set("Field", [40.764858695837184, -111.83394714415668])
-// myMap.set("Subway", [40.76450786986249, -111.85350243638295])
-
-
-// for (const [key, value] of myMap){
-//     L.marker(value).addTo(map).bindPopup(key)
-// }
 
 fetch('http://localhost:8080/spots')
   .then(res => res.json())
@@ -28,28 +17,71 @@ fetch('http://localhost:8080/spots')
   .catch(err => console.error('Error fetching study spots:', err));
 
 
-  document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('addSpotForm').addEventListener('submit', function (e) {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('addSpotForm').addEventListener('submit', function (e) {
+        e.preventDefault();
 
-    const name = document.getElementById('name').value;
-    const latitude = parseFloat(document.getElementById('lat').value);
-    const longitude = parseFloat(document.getElementById('lon').value);
-    const rating = parseFloat(document.getElementById('rating').value);
+        const name = document.getElementById('name').value;
+        const latitude = parseFloat(document.getElementById('lat').value);
+        const longitude = parseFloat(document.getElementById('lon').value);
+        const rating = parseFloat(document.getElementById('rating').value);
 
-    fetch('http://localhost:8080/spots', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, latitude, longitude, rating })
-    })
-      .then(res => res.json())
-      .then(spot => {
-        L.marker([spot.latitude, spot.longitude])
-          .addTo(map)
-          .bindPopup(`<b>${spot.name}</b><br>Rating: ${spot.rating}`);
+        fetch('http://localhost:8080/spots', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, latitude, longitude, rating })
+        })
+            .then(res => res.json())
+            .then(spot => {
+            L.marker([spot.latitude, spot.longitude]).addTo(map).bindPopup(`<b>${spot.name}</b><br>Rating: ${spot.rating}`);
 
-        document.getElementById('addSpotForm').reset();
-      })
-      .catch(err => console.error('Error adding spot:', err));
+            document.getElementById('addSpotForm').reset();
+        })
+            .catch(err => console.error('Error adding spot:', err));
   });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    let tempMarker = null;
+    map.on('click', function(e) {
+        const lat = e.latlng.lat;
+        const lon = e.latlng.lng;
+
+        if (tempMarker) {
+            map.removeLayer(tempMarker);
+        }
+
+        tempMarker = L.marker([lat, lon]).addTo(map);
+
+        document.getElementById('addSpotForm').style.display = 'none';
+        const mapForm = document.getElementById('mapClickForm');
+        mapForm.style.display = 'block';
+
+        document.getElementById('click-lat').value = lat;
+        document.getElementById('click-lon').value = lon;
+    });
+
+    document.getElementById('mapClickForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById('click-name').value;
+        const lat = parseFloat(document.getElementById('click-lat').value);
+        const lon = parseFloat(document.getElementById('click-lon').value);
+        const rating = parseFloat(document.getElementById('click-rating').value);
+
+        fetch('http://localhost:8080/spots', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, latitude: lat, longitude: lon, rating })
+    })
+        .then(res => res.json())
+        .then(spot => {
+        L.marker([spot.latitude, spot.longitude]).addTo(map).bindPopup(`<b>${spot.name}</b><br>Rating: ${spot.rating}`);
+
+        document.getElementById('mapClickForm').reset();
+        document.getElementById('mapClickForm').style.display = 'none';
+        document.getElementById('addSpotForm').style.display = 'block';
+    })
+        .catch(err => console.error('Error adding spot:', err));
+    });
 });
