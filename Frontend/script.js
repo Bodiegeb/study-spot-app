@@ -1,8 +1,7 @@
 const map = L.map('map').setView([40.76549231747426, -111.8421121901956], 13); // Salt Lake City coords
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-attribution: 'Map data © OpenStreetMap contributors',
-}).addTo(map);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+).addTo(map);
 
 
 fetch('http://localhost:8080/spots')
