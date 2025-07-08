@@ -15,14 +15,16 @@ public class StudySpot {
     private double latitude;
     private double longitude;
     private double rating;
+    private double wifiStrength;
 
     public StudySpot() {}
 
-    public StudySpot(String name, double latitude,double longitude, double rating) {
+    public StudySpot(String name, double latitude,double longitude, double rating, double wifiStrength) {
         this.name = name;
         this.longitude = longitude;
         this.latitude = latitude;
         this.rating = rating;
+        this.wifiStrength = wifiStrength;
     }
     
     public Long getId() {
@@ -51,5 +53,11 @@ public class StudySpot {
     }
     public void setRating(double rating) {
         this.rating = rating;
+    }
+    public double getWifiStrength() {
+        return this.wifiStrength;
+    }
+    public void setWifiStrength(double wifiStrength) {
+        this.wifiStrength = wifiStrength;
     }
 }
