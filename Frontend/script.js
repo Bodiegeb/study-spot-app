@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch('http://localhost:8080/spots', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, latitude, longitude, rating })
+            body: JSON.stringify({ name, latitude, longitude, rating, wifiStrength })
         })
             .then(res => res.json())
             .then(spot => {
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch('http://localhost:8080/spots', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, latitude: lat, longitude: lon, rating })
+            body: JSON.stringify({ name, latitude: lat, longitude: lon, rating, wifiStrength })
     })
         .then(res => res.json())
         .then(spot => {
