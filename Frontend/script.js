@@ -10,7 +10,7 @@ fetch('http://localhost:8080/spots')
     spots.forEach(spot => {
       L.marker([spot.latitude, spot.longitude])
         .addTo(map)
-        .bindPopup(`<b>${spot.name}</b><br>Rating: ${spot.rating}`);
+        .bindPopup(`<b>${spot.name}</b><br>Rating: ${spot.rating}<br>Wifi: ${spot.wifiStrength}`);
     });
   })
   .catch(err => console.error('Error fetching study spots:', err));
@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const latitude = parseFloat(document.getElementById('lat').value);
         const longitude = parseFloat(document.getElementById('lon').value);
         const rating = parseFloat(document.getElementById('rating').value);
+        const wifiStrength = parseFloat(document.getElementById('wifiStrength').value);
 
         fetch('http://localhost:8080/spots', {
             method: 'POST',
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .then(res => res.json())
             .then(spot => {
-            L.marker([spot.latitude, spot.longitude]).addTo(map).bindPopup(`<b>${spot.name}</b><br>Rating: ${spot.rating}`);
+            L.marker([spot.latitude, spot.longitude]).addTo(map).bindPopup(`<b>${spot.name}</b><br>Rating: ${spot.rating}<br>Wifi: ${spot.wifiStrength}`);
 
             document.getElementById('addSpotForm').reset();
         })
@@ -67,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const lat = parseFloat(document.getElementById('click-lat').value);
         const lon = parseFloat(document.getElementById('click-lon').value);
         const rating = parseFloat(document.getElementById('click-rating').value);
+        const wifiStrength = parseFloat(document.getElementById('click-wifiStrength').value);
 
         fetch('http://localhost:8080/spots', {
             method: 'POST',
@@ -75,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
     })
         .then(res => res.json())
         .then(spot => {
-        L.marker([spot.latitude, spot.longitude]).addTo(map).bindPopup(`<b>${spot.name}</b><br>Rating: ${spot.rating}`);
+        L.marker([spot.latitude, spot.longitude]).addTo(map).bindPopup(`<b>${spot.name}</b><br>Rating: ${spot.rating}<br>Wifi: ${spot.wifiStrength}`);
 
         document.getElementById('mapClickForm').reset();
         document.getElementById('mapClickForm').style.display = 'none';
