@@ -1,5 +1,5 @@
 const map = L.map('map').setView([40.76549231747426, -111.8421121901956], 13); // Salt Lake City coords
-
+// Initialize the map centered on Salt Lake City with a zoom level of 13
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 ).addTo(map);
 
@@ -15,7 +15,7 @@ fetch('http://localhost:8080/spots')
   })
   .catch(err => console.error('Error fetching study spots:', err));
 
-
+// This code initializes a Leaflet map centered on Salt Lake City and fetches study spots from the backend. It adds markers for each spot with a popup displaying the name, rating, and wifi strength. The map uses OpenStreetMap tiles for rendering.
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('addSpotForm').addEventListener('submit', function (e) {
         e.preventDefault();
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(err => console.error('Error adding spot:', err));
   });
 });
-
+// This code listens for clicks on the map, allowing users to add study spots by clicking on the map. It displays a form to input details about the spot, including name, latitude, longitude, rating, and wifi strength. When the form is submitted, it sends a POST request to the backend to save the new spot and updates the map with a marker for the new spot. The form is hidden after submission, and the user can click on the map again to add another spot.
 document.addEventListener('DOMContentLoaded', function () {
     let tempMarker = null;
     map.on('click', function(e) {
