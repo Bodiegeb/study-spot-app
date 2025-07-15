@@ -19,6 +19,7 @@
             <header class="formFill"></header>
             Add a new study spot or click on a spot to see its details.
             
+            // This form is displayed when the user wants to add a new spot manually.
             <form id="addSpotForm">
             <input type="text" id="name" placeholder="Name" required />
             <input type="number" id="lat" placeholder="Latitude" step="any" required />
@@ -28,6 +29,7 @@
             <button type="submit">Add Spot</button>
             </form>
 
+            // This form is displayed when the user clicks on the map to add a new spot.
             <form id="mapClickForm" style="display: none;">
             <input type="text" id="click-name" placeholder="Name" required />
             <input type="number" id="click-lat" readonly />
