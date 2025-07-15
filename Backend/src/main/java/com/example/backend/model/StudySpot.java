@@ -26,6 +26,14 @@ public class StudySpot {
         this.rating = rating;
         this.wifiStrength = wifiStrength;
     }
+
+    public double averageLongitude(double longitude, double otherLongitude) {
+        return (this.longitude + otherLongitude) / 2;
+    }
+
+    public double averageLatitude(double latitude, double otherLatitude) {
+        return (this.latitude + otherLatitude) / 2;
+    }
     
     public Long getId() {
         return this.id;
