@@ -17,6 +17,7 @@ public class StudySpot {
     private double rating;
     private double wifiStrength;
 
+    // Default constructor for JPA
     public StudySpot() {}
 
     public StudySpot(String name, double latitude,double longitude, double rating, double wifiStrength) {
@@ -27,6 +28,7 @@ public class StudySpot {
         this.wifiStrength = wifiStrength;
     }
 
+    //Getters and Setters for the class attributes
     public double averageLongitude(double longitude, double otherLongitude) {
         return (this.longitude + otherLongitude) / 2;
     }
