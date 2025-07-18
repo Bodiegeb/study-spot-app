@@ -29,11 +29,11 @@ public class StudySpot {
     }
 
     //Getters and Setters for the class attributes
-    public double averageLongitude(double longitude, double otherLongitude) {
+    public double averageLongitude(double otherLongitude) {
         return (this.longitude + otherLongitude) / 2;
     }
 
-    public double averageLatitude(double latitude, double otherLatitude) {
+    public double averageLatitude(double otherLatitude) {
         return (this.latitude + otherLatitude) / 2;
     }
     
