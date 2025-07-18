@@ -5,7 +5,7 @@ body{
 }
 
 header{
-    background: #003366;
+    background: #0f1317;
     color: white;
     padding: 1rem auto;
     display: flex;
@@ -30,7 +30,7 @@ h1{
     width: 80%;
     height: auto;
     margin: 2rem auto;
-    background: #cecccc;
+    background: #949098;
 }
 .controlPanel input, .controlPanel select{
     width: 100%;
