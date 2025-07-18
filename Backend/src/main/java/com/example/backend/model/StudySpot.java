@@ -64,10 +64,16 @@ public class StudySpot {
     public void setRating(double rating) {
         this.rating = rating;
     }
+    public void averageRating(double otherRating) {
+        this.rating = (this.rating + otherRating) / 2;
+    }
     public double getWifiStrength() {
         return this.wifiStrength;
     }
     public void setWifiStrength(double wifiStrength) {
         this.wifiStrength = wifiStrength;
+    }
+    public void averageWifiStrength(double otherWifiStrength) {
+        this.wifiStrength = (this.wifiStrength + otherWifiStrength) / 2;
     }
 }
