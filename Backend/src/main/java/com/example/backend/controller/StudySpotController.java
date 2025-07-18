@@ -61,4 +61,12 @@ public class StudySpotController {
         repository.save(spot);
         return spot.getRating();
     }
+    // === GET average wifi strength ===
+    @GetMapping("/average/wifi/{id1}/{wifiStrength}")
+    public double getAverageWifiStrength(@PathVariable Long id1, @PathVariable double newWifiStrength) {
+        StudySpot spot = repository.findById(id1).orElseThrow();
+        spot.averageWifiStrength(newWifiStrength);
+        repository.save(spot);
+        return spot.getWifiStrength();
+    }
 }
