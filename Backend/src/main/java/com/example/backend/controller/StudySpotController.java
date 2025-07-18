@@ -41,4 +41,14 @@ public class StudySpotController {
     public void deleteSpot(@PathVariable Long id) {
         repository.deleteById(id);
     }
+    @GetMapping("/average/{id1}/{id2}")
+    public double[] getAverageCoordinates(@PathVariable Long id1, @PathVariable Long id2) {
+        StudySpot s1 = repository.findById(id1).orElseThrow();
+        StudySpot s2 = repository.findById(id2).orElseThrow();
+        
+        double avgLat = s1.averageLatitude(s2.getLatitude());
+        double avgLon = s1.averageLongitude(s2.getlongitude());
+        
+        return new double[] { avgLat, avgLon };
+    }
 }
