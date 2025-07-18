@@ -53,4 +53,12 @@ public class StudySpotController {
         
         return new double[] { avgLat, avgLon };
     }
+    // === GET average rating ===
+    @GetMapping("/average/rating/{id1}/{rating}")
+    public double getAverageRating(@PathVariable Long id1, @PathVariable double newRating) {
+        StudySpot spot = repository.findById(id1).orElseThrow();
+        spot.averageRating(newRating);
+        repository.save(spot);
+        return spot.getRating();
+    }
 }
