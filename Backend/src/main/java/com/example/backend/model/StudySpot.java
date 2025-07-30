@@ -16,16 +16,18 @@ public class StudySpot {
     private double longitude;
     private double rating;
     private double wifiStrength;
+    private double loungeSpace;
 
     // Default constructor for JPA
     public StudySpot() {}
 
-    public StudySpot(String name, double latitude,double longitude, double rating, double wifiStrength) {
+    public StudySpot(String name, double latitude,double longitude, double rating, double wifiStrength, double loungeSpace) {
         this.name = name;
         this.longitude = longitude;
         this.latitude = latitude;
         this.rating = rating;
         this.wifiStrength = wifiStrength;
+        this.loungeSpace = loungeSpace;
     }
 
     //Getters and Setters for the class attributes
@@ -75,5 +77,14 @@ public class StudySpot {
     }
     public void averageWifiStrength(double otherWifiStrength) {
         this.wifiStrength = (this.wifiStrength + otherWifiStrength) / 2;
+    }
+    public double getLoungeSpace() {
+        return this.loungeSpace;
+    }
+    public void setLoungeSpace(double loungeSpace) {
+        this.loungeSpace = loungeSpace;
+    }
+    public void averageLoungeSpace(double otherLoungeSpace) {
+        this.loungeSpace = (this.loungeSpace + otherLoungeSpace) / 2;
     }
 }
