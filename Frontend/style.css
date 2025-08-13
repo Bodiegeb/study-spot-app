@@ -37,3 +37,15 @@ h1{
     padding: 0.5rem;
     margin: 0.5rem 0;
 }
+.controlPanel button{
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    background: #324b64;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.controlPanel button:hover{
+    background: #1a1e22;
+}
